@@ -1,10 +1,23 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+import mongoose from "mongoose";
 
 import contactsRouter from "./routes/contactsRouter.js";
 
+const DB_HOST =
+  "mongodb+srv://natalinanikolaienko:3kVWCO4RNTGMU7E8@cluster0.3fstrpi.mongodb.net/db-contacts?retryWrites=true&w=majority";
+
 const app = express();
+
+mongoose.set("strictQuery", true);
+mongoose
+  .connect(DB_HOST)
+  .then(() => console.log("Database connection successful"))
+  .catch((error) => {
+    console.log(error.message);
+    process.exit(1);
+  });
 
 app.use(morgan("tiny"));
 app.use(cors());

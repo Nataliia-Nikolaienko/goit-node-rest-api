@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { HandleMongooseError } from "../helpers/handleMongooseError.js";
+import { HandleMongooseError } from "../helpers/index.js";
 
 const contactSchema = new Schema(
   {
@@ -22,6 +22,7 @@ const contactSchema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
+      required: true,
     },
   },
   { versionKey: false, timestamps: true }

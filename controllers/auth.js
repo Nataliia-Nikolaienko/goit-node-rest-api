@@ -1,3 +1,4 @@
+import "dotenv/config";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.js";
@@ -55,7 +56,7 @@ const logout = async (req, res) => {
   const { _id } = req.user;
   await User.findByIdAndUpdate(_id, { token: "" });
   res.json({
-    message: "Lodout success",
+    message: "Logout success",
   });
 };
 
